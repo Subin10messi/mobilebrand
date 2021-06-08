@@ -8,3 +8,15 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.mobile_brand
+
+class Product(models.Model):
+    mobile_name=models.CharField(max_length=120,unique=True)
+    brand=models.ForeignKey(Brand,on_delete=models.CASCADE)
+    price=models.IntegerField()
+    specs=models.CharField(max_length=200)
+    image=models.ImageField(upload_to="images")
+
+    def __str__(self):
+        return self.mobile_name
+
+
